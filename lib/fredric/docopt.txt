@@ -1,0 +1,61 @@
+Fredric
+
+Usage:
+  fred get [--csv] PATH [PARAMS...]
+  fred pretty PATH [PARAMS...]
+  fred see PATH [PARAMS...]
+  fred url PATH [PARAMS...]
+  fred save [--csv] FILE PATH [PARAMS...]
+  fred (-h|--help|--version)
+
+Commands:
+  get
+    Downloads data and prints it to screen as it. 
+  
+  pretty
+    Downloads data and prints it as a prettified JSON output.
+
+  see
+    Downloads data and awesome-prints it.
+
+  url
+    Shows the URL constructed from the request.
+
+  save
+    Downloads data and saves it to a file.
+
+Parameters:
+  PATH:
+    This is the FRED API path, without the query string.
+    For example: `series` or `series/ovservations`.
+
+  PARAMS:
+    An optional list of query string parameters, separated by a space, to 
+    send with the request. Each parameter should be in the format of 
+    key:value, for example: limit:25 offset:3
+
+  FILE:
+    Path to the output file.
+
+Flags:
+  --csv
+    When this flag is provided, the data will be converted to CSV before
+    it is displayed or saved. Note that this works only with endpoints that
+    have a 'data' attribute.
+
+Environment Variables:
+  FREDRIC_KEY=y0urAP1k3y
+    Set Your FRED api key. This variable is required.
+
+  FREDRIC_CACHE_LIFE=360
+    Set the number of seconds to consider the cache fresh. This variable
+    it optional.
+
+  FREDRIC_CACHE_DIR=./cache
+    Set the cache directory. This variable is optional.
+    If both FREDRIC_CACHE_DIR and FREDRIC_CACHE_LIFE are not set, requests
+    will not be cached.
+
+Examples:
+  fred see series/observations series_id:GNPCA
+  fred get --csv series/observations series_id:GNPCA

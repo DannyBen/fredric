@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'fredric'
+
+begin
+  Fredric::CommandLine.instance.execute ARGV
+rescue Fredric::BadResponse => e
+  STDERR.puts "#{e.class} - #{e.message}"
+end
