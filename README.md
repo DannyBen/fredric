@@ -192,7 +192,7 @@ these environment variables:
 ```
 $ export FREDRIC_CACHE_DIR=cache   # default: 'cache'
 $ export FREDRIC_CACHE_LIFE=120    # default: 3600 (1 hour)
-$ fredric get indices
+$ fred see category/children
 # => This call will be cached
 ```
 

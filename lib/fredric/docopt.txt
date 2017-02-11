@@ -57,5 +57,14 @@ Environment Variables:
     will not be cached.
 
 Examples:
+  fred see category/children
   fred see series/observations series_id:GNPCA
   fred get --csv series/observations series_id:GNPCA
+  fred see series/search "search_text:consumer price index" limit:3
+  fred save result.json series/search search_text:cpi limit:3
+  fred save --csv result.csv series/observations series_id:GNPCA
+
+Additional Information:
+  Fredric Home:    https://github.com/DannyBen/fredric
+  FRED API Docs:   https://research.stlouisfed.org/docs/api/fred/
+
