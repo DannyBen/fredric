@@ -38,7 +38,7 @@ module Fredric
     end
 
     def get_csv(*args)
-      response = get *args
+      response = get(*args)
 
       raise Fredric::BadResponse, "API said '#{response}'" if response.is_a? String
       raise Fredric::BadResponse, "Got a #{response.class}, expected a Hash" unless response.is_a? Hash
@@ -55,7 +55,7 @@ module Fredric
     end
 
     def save_csv(file, *args)
-      data = get_csv *args
+      data = get_csv(*args)
       File.write file, data
     end
 
