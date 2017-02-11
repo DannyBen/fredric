@@ -201,3 +201,4 @@ $ fredric get indices
 [2]: https://github.com/DannyBen/fredric/blob/master/lib/fredric/docopt.txt
 [3]: https://github.com/DannyBen/webcache
 [4]: https://research.stlouisfed.org/docs/api/api_key.html
+
