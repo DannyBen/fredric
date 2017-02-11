@@ -46,7 +46,7 @@ First, require and initialize with your [FRED API Key][4].
 
 ```ruby
 require 'fredric'
-fredric = Fredric::API.new api_key: 'y0urAP1k3y'
+fredric = Fredric::API.new 'your-api-key'
 ```
 
 Now, you can access any FRED endpoint with any optional parameter, like
