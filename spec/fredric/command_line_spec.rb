@@ -96,7 +96,7 @@ describe CommandLine do
       end
     end
 
-    context "with pretty command", :focus do
+    context "with pretty command" do
       let(:command) { %w[pretty series series_id:GNPCA] }
 
       it "prints a prettified json output" do

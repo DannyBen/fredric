@@ -7,7 +7,7 @@ describe API do
 
   let(:fredric) { API.new ENV['FREDRIC_KEY'], use_cache: true }
 
-  describe '#new' do
+  describe '#new', :focus do
     it "initializes with api key" do
       fredric = API.new 'my-api-key'
       expect(fredric.api_key).to eq 'my-api-key'
@@ -20,12 +20,10 @@ describe API do
 
     it "initializes with options" do
       fredric = API.new 'my-api-key',
-        base_url: 'http://new.fred.org/v99',
         use_cache: true,
         cache_dir: 'custom',
         cache_life: 1337
 
-      expect(fredric.base_url).to eq 'http://new.fred.org/v99'
       expect(fredric.cache.dir).to eq 'custom'
       expect(fredric.cache.life).to eq 1337
       expect(fredric.cache).to be_enabled
@@ -33,7 +31,7 @@ describe API do
 
   end
 
-  describe '#get_csv' do
+  describe '#get_csv', :focus do
     context "with a request that contains at least one array" do
       it "returns a csv string" do
         result = fredric.get_csv 'series/observations', series_id: 'GNPCA', 
