@@ -70,10 +70,10 @@ describe CommandLine do
     end
 
     context "with url command" do
-      let(:command) { %w[url doesnt really:matter] }
+      let(:command) { %w[url series series_id:GNPCA] }
 
       it "returns a url" do
-        expected = /api\.stlouisfed\.org\/fred\/doesnt\?api_key=.*&file_type=json&really=matter/
+        expected = /api\.stlouisfed\.org\/fred\/series\?api_key=.*&file_type=json&series_id=GNPCA/
         expect {cli.execute command}.to output(expected).to_stdout
       end
     end
@@ -109,7 +109,7 @@ describe CommandLine do
       let(:command) { %w[see series series_id:GNPCA] }
 
       it "awesome-prints output" do
-        expected = /:seriess.*=>.*\[/
+        expected = /"seriess".*=>.*\[/
         expect {cli.execute command}.to output(expected).to_stdout
       end
     end
@@ -152,7 +152,8 @@ describe CommandLine do
       let(:command) { %W[get not_here] }
       
       it "fails with honor" do
-        expect {cli.execute command}.to output(/404 Not Found/).to_stdout
+        expected = %Q[{"error_code":404,"error_message":"Not Found"}\n]
+        expect {cli.execute command}.to output(expected).to_stdout
       end
     end
   end

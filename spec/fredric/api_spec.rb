@@ -7,7 +7,7 @@ describe API do
 
   let(:fredric) { API.new ENV['FREDRIC_KEY'], use_cache: true }
 
-  describe '#new', :focus do
+  describe '#new' do
     it "initializes with api key" do
       fredric = API.new 'my-api-key'
       expect(fredric.api_key).to eq 'my-api-key'
@@ -28,10 +28,9 @@ describe API do
       expect(fredric.cache.life).to eq 1337
       expect(fredric.cache).to be_enabled
     end
-
   end
 
-  describe '#get_csv', :focus do
+  describe '#get_csv' do
     context "with a request that contains at least one array" do
       it "returns a csv string" do
         result = fredric.get_csv 'series/observations', series_id: 'GNPCA', 
@@ -53,7 +52,6 @@ describe API do
         expect{fredric.get_csv :bogus_endpoint}.to raise_error(BadResponse)
       end
     end
-
   end
 
   describe '#save_csv' do

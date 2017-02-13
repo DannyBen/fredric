@@ -77,12 +77,37 @@ fredric.get 'endpoint/sub', param: value
 fredric.endpoint 'sub', param: value
 ```
 
-By default, you will get a ruby hash in return. If you wish to get the raw
-output, you can use the `get!` method:
+By default, you will get a ruby hash in return. If you wish to have more 
+control over the response, use the `get!` method instead:
 
 ```ruby
 result = fredric.get! "series/ovservations", series_id: 'GNPCA'
+
+# Request Object
+p payload.request.class
+# => HTTParty::Request
+
+# Response Object
+p payload.response.class
+# => Net::HTTPOK
+
+p payload.response.body
 # => JSON string
+
+p payload.response.code
+# => 200
+
+p payload.response.msg
+# => OK
+
+# Headers Object
+p payload.headers
+# => Hash with headers
+
+# Parsed Response Object
+p payload.parsed_response
+# => Hash with HTTParty parsed response 
+#    (this is the content returned with #get)
 ```
 
 You can get the response as CSV by calling `get_csv`:
@@ -109,17 +134,6 @@ Or, to save CSV, use the `save_csv` method:
 fredric.save_csv "filename.csv", "series/overvations", series_id: 'GNPCA'
 ```
 
-Debugging your request and adding "sticky" query parameters that stay with
-you for the following requests is also easy:
-
-```ruby
-fredric.debug = true
-fredric.param limit: 10, sort_order: :asc, file_type: :xml
-puts fredric.series 'observations', series_id: 'GNPCA'
-# => https://api.stlouisfed.org/fred/series/observations?api_key=...&file_type=xml&limit=10&sort_order=asc&series_id=GNPCA
-
-fredric.param sort_order: nil # remove param
-```
 
 
 Command Line
@@ -166,11 +180,11 @@ $ fred url series/observations query:interest limit:5
 Caching
 --------------------------------------------------
 
-We are using the [WebCache][3] gem for automatic HTTP caching.
+We are using the [Lightly][3] gem for automatic HTTP caching.
 To take the path of least surprises, caching is disabled by default.
 
 You can enable and customize it by either passing options on 
-initialization, or by accessing the `WebCache` object directly at 
+initialization, or by accessing the `Lightly` object directly at 
 a later stage.
 
 ```ruby
@@ -199,6 +213,6 @@ $ fred see category/children
 
 [1]: https://research.stlouisfed.org/docs/api/fred/
 [2]: https://github.com/DannyBen/fredric/blob/master/lib/fredric/docopt.txt
-[3]: https://github.com/DannyBen/webcache
+[3]: https://github.com/DannyBen/lightly
 [4]: https://research.stlouisfed.org/docs/api/api_key.html
 
