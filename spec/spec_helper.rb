@@ -7,6 +7,15 @@ Bundler.require :default, :development
 
 include Fredric
 
+RSpec.configure do |config|
+  config.before :suite do 
+    puts "Running spec_helper > before :suite"
+    puts "Flushing cache"
+    APICake::Base.new.cache.flush
+  end
+end
+
+
 def fixture(filename, data=nil)
   if data
     File.write "spec/fixtures/#{filename}", data

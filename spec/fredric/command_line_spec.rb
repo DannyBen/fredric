@@ -115,7 +115,7 @@ describe CommandLine do
     end
 
     context "with save command" do
-      let(:command) { %W[save tmp.json series/observations series_id:GNPCA observation_start:2007-01-01 observation_end:2015-01-01] }
+      let(:command) { %W[save tmp.json category/children category_id:0] }
       let(:filename) { 'tmp.json' }
 
       it "saves a file" do
@@ -125,14 +125,14 @@ describe CommandLine do
 
         expect {cli.execute command}.to output(expected).to_stdout
         expect(File).to exist filename
-        expect(File.read filename).to eq fixture('gnpca.json')
+        expect(File.read filename).to eq fixture('categories.json')
 
         File.unlink filename
       end
     end
 
     context "with save --csv command" do
-      let(:command) { %W[save --csv tmp.csv series/observations series_id:GNPCA observation_start:2007-01-01 observation_end:2015-01-01] }
+      let(:command) { %W[save --csv tmp.csv category/children category_id:0] }
       let(:filename) { 'tmp.csv' }
 
       it "saves a csv file" do
@@ -142,7 +142,7 @@ describe CommandLine do
 
         expect {cli.execute command}.to output(expected).to_stdout
         expect(File).to exist filename
-        expect(File.read filename).to eq fixture('gnpca.csv')
+        expect(File.read filename).to eq fixture('categories.csv')
 
         File.unlink filename
       end
