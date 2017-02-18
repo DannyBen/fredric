@@ -31,7 +31,7 @@ describe API do
   end
 
   describe '#get_csv' do
-    context "with a request that contains at least one array" do
+    context "with a response that contains at least one array" do
       it "returns a csv string" do
         result = fredric.get_csv 'category/children', category_id: 0
         expect(result).to eq fixture('categories.csv')
@@ -48,7 +48,7 @@ describe API do
 
     context "with a non hash response" do
       it "raises an error" do
-        expect{fredric.get_csv :bogus_endpoint}.to raise_error(BadResponse)
+        expect{fredric.get_csv :bogus_endpoint}.to raise_error(APICake::BadResponse)
       end
     end
   end

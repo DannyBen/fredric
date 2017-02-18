@@ -71,12 +71,12 @@ module Fredric
     end
 
     def pretty
-      payload = fredric.get(path, params)
+      payload = fredric.get path, params
       puts JSON.pretty_generate payload
     end
 
     def see
-      ap fredric.get(path, params)
+      ap fredric.get path, params
     end
 
     def url
