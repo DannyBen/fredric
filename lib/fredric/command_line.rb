@@ -56,7 +56,8 @@ module Fredric
       if csv
         puts fredric.get_csv path, params
       else
-        puts fredric.get! path, params
+        payload = fredric.get! path, params
+        puts payload.response.body
       end
     end
 
@@ -70,8 +71,8 @@ module Fredric
     end
 
     def pretty
-      response = fredric.get path, params
-      puts JSON.pretty_generate response
+      payload = fredric.get path, params
+      puts JSON.pretty_generate payload
     end
 
     def see
@@ -79,9 +80,7 @@ module Fredric
     end
 
     def url
-      fredric.debug = true
-      puts fredric.get path, params
-      fredric.debug = false
+      puts fredric.url path, params
     end
 
     # Convert a params array like [key:value, key:value] to a hash like

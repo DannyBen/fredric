@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'docopt', '~> 0.5'
   s.add_runtime_dependency 'awesome_print', '~> 1.7'
-  s.add_runtime_dependency 'webcache', '~> 0.3'
+  s.add_runtime_dependency 'apicake', '~> 0.1'
 
   s.add_development_dependency 'runfile', '~> 0.8'
   s.add_development_dependency 'runfile-tasks', '~> 0.4'

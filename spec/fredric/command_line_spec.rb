@@ -70,10 +70,10 @@ describe CommandLine do
     end
 
     context "with url command" do
-      let(:command) { %w[url doesnt really:matter] }
+      let(:command) { %w[url series series_id:GNPCA] }
 
       it "returns a url" do
-        expected = /api\.stlouisfed\.org\/fred\/doesnt\?api_key=.*&file_type=json&really=matter/
+        expected = /api\.stlouisfed\.org\/fred\/series\?api_key=.*&file_type=json&series_id=GNPCA/
         expect {cli.execute command}.to output(expected).to_stdout
       end
     end
@@ -96,7 +96,7 @@ describe CommandLine do
       end
     end
 
-    context "with pretty command", :focus do
+    context "with pretty command" do
       let(:command) { %w[pretty series series_id:GNPCA] }
 
       it "prints a prettified json output" do
@@ -109,13 +109,13 @@ describe CommandLine do
       let(:command) { %w[see series series_id:GNPCA] }
 
       it "awesome-prints output" do
-        expected = /:seriess.*=>.*\[/
+        expected = /"seriess".*=>.*\[/
         expect {cli.execute command}.to output(expected).to_stdout
       end
     end
 
     context "with save command" do
-      let(:command) { %W[save tmp.json series/observations series_id:GNPCA observation_start:2007-01-01 observation_end:2015-01-01] }
+      let(:command) { %W[save tmp.json category/children category_id:0] }
       let(:filename) { 'tmp.json' }
 
       it "saves a file" do
@@ -125,14 +125,14 @@ describe CommandLine do
 
         expect {cli.execute command}.to output(expected).to_stdout
         expect(File).to exist filename
-        expect(File.read filename).to eq fixture('gnpca.json')
+        expect(File.read filename).to eq fixture('categories.json')
 
         File.unlink filename
       end
     end
 
     context "with save --csv command" do
-      let(:command) { %W[save --csv tmp.csv series/observations series_id:GNPCA observation_start:2007-01-01 observation_end:2015-01-01] }
+      let(:command) { %W[save --csv tmp.csv category/children category_id:0] }
       let(:filename) { 'tmp.csv' }
 
       it "saves a csv file" do
@@ -142,7 +142,7 @@ describe CommandLine do
 
         expect {cli.execute command}.to output(expected).to_stdout
         expect(File).to exist filename
-        expect(File.read filename).to eq fixture('gnpca.csv')
+        expect(File.read filename).to eq fixture('categories.csv')
 
         File.unlink filename
       end
@@ -152,7 +152,8 @@ describe CommandLine do
       let(:command) { %W[get not_here] }
       
       it "fails with honor" do
-        expect {cli.execute command}.to output(/404 Not Found/).to_stdout
+        expected = %Q[{"error_code":404,"error_message":"Not Found"}\n]
+        expect {cli.execute command}.to output(expected).to_stdout
       end
     end
   end
