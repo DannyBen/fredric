@@ -140,8 +140,7 @@ Command Line
 --------------------------------------------------
 
 The command line utility `fred` acts in a similar way. To set your 
-FRED API Key, simply set it in the environment variables 
-`FREDRIC_KEY`:
+FRED API Key, simply set it in the environment variable `FREDRIC_KEY`:
 
 `$ export FREDRIC_KEY=y0urAP1k3y`
 
