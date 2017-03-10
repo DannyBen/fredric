@@ -140,9 +140,9 @@ Command Line
 --------------------------------------------------
 
 The command line utility `fred` acts in a similar way. To set your 
-FRED API Key, simply set it in the environment variable `FREDRIC_KEY`:
+FRED API Key, simply set it in the environment variable `FRED_KEY`:
 
-`$ export FREDRIC_KEY=y0urAP1k3y`
+`$ export FRED_KEY=y0urAP1k3y`
 
 These commands are available:
 
@@ -203,8 +203,8 @@ To enable caching for the command line, simply set one or both of
 these environment variables:
 
 ```
-$ export FREDRIC_CACHE_DIR=cache   # default: 'cache'
-$ export FREDRIC_CACHE_LIFE=120    # default: 3600 (1 hour)
+$ export FRED_CACHE_DIR=cache   # default: 'cache'
+$ export FRED_CACHE_LIFE=120    # default: 3600 (1 hour)
 $ fred see category/children
 # => This call will be cached
 ```
