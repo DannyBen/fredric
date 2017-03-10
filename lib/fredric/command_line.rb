@@ -42,7 +42,7 @@ module Fredric
       @csv    = args['--csv']
 
       unless api_key
-        raise Fredric::MissingAuth, "Missing Authentication\nPlease set FREDRIC_KEY=y0urAP1k3y"
+        raise Fredric::MissingAuth, "Missing Authentication\nPlease set FRED_KEY=y0urAP1k3y"
       end
       
       return get    if args['get']
@@ -106,15 +106,15 @@ module Fredric
     end
 
     def api_key
-      ENV['FREDRIC_KEY']
+      ENV['FRED_KEY']
     end
 
     def cache_dir
-      ENV['FREDRIC_CACHE_DIR']
+      ENV['FRED_CACHE_DIR']
     end
 
     def cache_life
-      ENV['FREDRIC_CACHE_LIFE']
+      ENV['FRED_CACHE_LIFE']
     end
 
   end

@@ -4,12 +4,12 @@ describe CommandLine do
   let(:cli) { Fredric::CommandLine.instance }
 
   before :all do
-    ENV['FREDRIC_KEY'] or raise "Please set FREDRIC_KEY=y0urAP1k3y before running tests"
+    ENV['FRED_KEY'] or raise "Please set FRED_KEY=y0urAP1k3y before running tests"
   end
 
   before do
-    ENV['FREDRIC_CACHE_DIR'] = 'cache'
-    ENV['FREDRIC_CACHE_LIFE'] = '86400'
+    ENV['FRED_CACHE_DIR'] = 'cache'
+    ENV['FRED_CACHE_LIFE'] = '86400'
   end
 
   describe '#initialize' do
@@ -17,8 +17,8 @@ describe CommandLine do
 
     context "without environment variables" do
       before do
-        ENV['FREDRIC_CACHE_DIR'] = nil
-        ENV['FREDRIC_CACHE_LIFE'] = nil
+        ENV['FRED_CACHE_DIR'] = nil
+        ENV['FRED_CACHE_LIFE'] = nil
       end
 
       it "has cache disabled" do
@@ -28,19 +28,19 @@ describe CommandLine do
 
     context "with CACHE_DIR" do
       it "enables cache" do
-        ENV['FREDRIC_CACHE_DIR'] = 'hello'
+        ENV['FRED_CACHE_DIR'] = 'hello'
         expect(cli.fredric.cache).to be_enabled
         expect(cli.fredric.cache.dir).to eq 'hello'
-        ENV.delete 'FREDRIC_CACHE_DIR'
+        ENV.delete 'FRED_CACHE_DIR'
       end
     end
 
     context "with CACHE_LIFE" do
       it "enables cache" do
-        ENV['FREDRIC_CACHE_LIFE'] = '123'
+        ENV['FRED_CACHE_LIFE'] = '123'
         expect(cli.fredric.cache).to be_enabled
         expect(cli.fredric.cache.life).to eq 123
-        ENV.delete 'FREDRIC_CACHE_LIFE'
+        ENV.delete 'FRED_CACHE_LIFE'
       end
     end
   end
@@ -52,16 +52,16 @@ describe CommandLine do
       end
     end
 
-    context "without FREDRIC_KEY" do
+    context "without FRED_KEY" do
       let(:command) { %w[see series series_id:GNPCA] }
 
       before do
-        @auth = ENV['FREDRIC_KEY']
-        ENV.delete 'FREDRIC_KEY'
+        @auth = ENV['FRED_KEY']
+        ENV.delete 'FRED_KEY'
       end
 
       after do
-        ENV['FREDRIC_KEY'] = @auth
+        ENV['FRED_KEY'] = @auth
       end
 
       it "shows a friendly error" do

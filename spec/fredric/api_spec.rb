@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe API do
   before :all do
-    ENV['FREDRIC_KEY'] or raise "Please set FREDRIC_KEY=y0urAP1k3y before running tests"
+    ENV['FRED_KEY'] or raise "Please set FRED_KEY=y0urAP1k3y before running tests"
   end
 
-  let(:fredric) { API.new ENV['FREDRIC_KEY'], use_cache: true }
+  let(:fredric) { API.new ENV['FRED_KEY'], use_cache: true }
 
   describe '#new' do
     it "initializes with api key" do
