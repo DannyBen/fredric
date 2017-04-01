@@ -1,7 +1,7 @@
 require "runfile-tasks"
 require_relative 'lib/fredric'
 
-name    "Fredric Developer Toolbelt"
+title   "Fredric Developer Toolbelt"
 summary "Runfile tasks for building the Fredric gem"
 version Fredric::VERSION
 
