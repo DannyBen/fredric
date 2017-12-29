@@ -1,2 +1,2 @@
 id,realtime_start,realtime_end,title,observation_start,observation_end,frequency,frequency_short,units,units_short,seasonal_adjustment,seasonal_adjustment_short,last_updated,popularity,notes
-GNPCA,.*,.*,Real Gross National Product,.*,Annual,A,Billions of Chained 2009 Dollars,Bil. of Chn. 2009 \$,Not Seasonally Adjusted,NSA,.*,BEA Account Code: A001RX1
+GNPCA,.*,.*,Real Gross National Product,.*,Annual,A,Billions of Chained 2009 Dollars,Bil. of Chn. 2009 \$,Not Seasonally Adjusted,NSA,.*BEA Account Code: A001RX
