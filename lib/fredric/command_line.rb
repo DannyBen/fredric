@@ -1,4 +1,3 @@
-require 'singleton'
 require 'super_docopt'
 require 'json'
 require 'awesome_print'
