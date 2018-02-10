@@ -3,7 +3,9 @@
 require 'fredric'
 
 begin
-  Fredric::CommandLine.instance.execute ARGV
+  Fredric::CommandLine.execute ARGV
 rescue APICake::BadResponse => e
   STDERR.puts "#{e.class} - #{e.message}"
+rescue Fredric::MissingAuth => e
+  STDERR.puts e.message
 end

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe CommandLine do
-  let(:cli) { Fredric::CommandLine.instance }
+  let(:cli) { Fredric::CommandLine }
 
   before :all do
     ENV['FRED_KEY'] or raise "Please set FRED_KEY=y0urAP1k3y before running tests"
@@ -64,8 +64,8 @@ describe CommandLine do
         ENV['FRED_KEY'] = @auth
       end
 
-      it "shows a friendly error" do
-        expect {cli.execute command}.to output(/Missing Authentication/).to_stdout
+      it "raises a MissingAuth error" do
+        expect {cli.execute command}.to raise_error(Fredric::MissingAuth)
       end
     end
 
