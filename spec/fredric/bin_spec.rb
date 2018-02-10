@@ -19,4 +19,20 @@ describe 'bin/fred' do
       expect(`#{command}`).to eq "APICake::BadResponse - 400 Bad Request\n"
     end
   end
+
+  context "without FRED_KEY" do
+    before do
+      @auth = ENV['FRED_KEY']
+      ENV.delete 'FRED_KEY'
+    end
+
+    after do
+      ENV['FRED_KEY'] = @auth
+    end
+
+    it "shows a friendly error" do
+      command = 'bin/fred see series series_id:GNPCA 2>&1'
+      expect(`#{command}`).to eq "Missing Authentication\nPlease set FRED_KEY=y0urAP1k3y\n"
+    end
+  end
 end

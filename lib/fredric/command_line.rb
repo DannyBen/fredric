@@ -1,41 +1,19 @@
 require 'singleton'
-require 'docopt'
+require 'super_docopt'
 require 'json'
 require 'awesome_print'
 
 module Fredric
 
   # Handles the command line interface
-  class CommandLine
-    include Singleton
-
-    # Gets an array of arguments (e.g. ARGV), executes the command if valid
-    # and shows usage patterns / help otherwise.
-    def execute(argv=[])
-      doc = File.read File.dirname(__FILE__) + '/docopt.txt'
-      begin
-        args = Docopt::docopt(doc, argv: argv, version: VERSION)
-        handle args
-      rescue Docopt::Exit, Fredric::MissingAuth => e
-        puts e.message
-      end
-    end
-
-    def fredric
-      @fredric ||= fredric!
-    end
-
-    private
+  class CommandLine < SuperDocopt::Base
+    version VERSION
+    docopt File.expand_path 'docopt.txt', __dir__
+    subcommands ['get', 'pretty', 'see', 'url', 'save']
 
     attr_reader :path, :params, :file, :csv
 
-    def fredric!
-      Fredric::API.new api_key, options
-    end
-
-    # Called when the arguments match one of the usage patterns. Will 
-    # delegate action to other, more specialized methods.
-    def handle(args)
+    def before_execute
       @path   = args['PATH']
       @params = translate_params args['PARAMS']
       @file   = args['FILE']
@@ -44,12 +22,6 @@ module Fredric
       unless api_key
         raise Fredric::MissingAuth, "Missing Authentication\nPlease set FRED_KEY=y0urAP1k3y"
       end
-      
-      return get    if args['get']
-      return pretty if args['pretty']
-      return see    if args['see']
-      return url    if args['url']
-      return save   if args['save']
     end
 
     def get
@@ -81,6 +53,16 @@ module Fredric
 
     def url
       puts fredric.url path, params
+    end
+
+    def fredric
+      @fredric ||= fredric!
+    end
+
+    private
+
+    def fredric!
+      Fredric::API.new api_key, options
     end
 
     # Convert a params array like [key:value, key:value] to a hash like
