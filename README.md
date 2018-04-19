@@ -1,10 +1,10 @@
 FRED API Library and Command Line
 ==================================================
 
-[![Gem](https://img.shields.io/gem/v/fredric.svg?style=flat-square)](https://rubygems.org/gems/fredric)
-[![Build](https://img.shields.io/travis/DannyBen/fredric/master.svg?style=flat-square)](https://travis-ci.org/DannyBen/fredric)
-[![Maintainability](https://img.shields.io/codeclimate/maintainability/DannyBen/fredric.svg?style=flat-square)](https://codeclimate.com/github/DannyBen/fredric)
-[![Dependencies](https://img.shields.io/gemnasium/DannyBen/fredric.svg?style=flat-square)](https://gemnasium.com/DannyBen/fredric)
+[![Gem Version](https://badge.fury.io/rb/fredric.svg)](https://badge.fury.io/rb/fredric)
+[![Build Status](https://travis-ci.org/DannyBen/fredric.svg?branch=master)](https://travis-ci.org/DannyBen/fredric)
+[![Maintainability](https://api.codeclimate.com/v1/badges/4b0a8627ceb5343b55fa/maintainability)](https://codeclimate.com/github/DannyBen/fredric/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/4b0a8627ceb5343b55fa/test_coverage)](https://codeclimate.com/github/DannyBen/fredric/test_coverage)
 
 ---
 
