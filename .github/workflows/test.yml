@@ -12,6 +12,9 @@ jobs:
     strategy:
       matrix: { ruby: ['2.4', '2.5', '2.6', '2.7'] }
 
+    env:
+      FRED_KEY: ${{ secret.FRED_KEY }}
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
