@@ -2,7 +2,7 @@ FRED API Library and Command Line
 ==================================================
 
 [![Gem Version](https://badge.fury.io/rb/fredric.svg)](https://badge.fury.io/rb/fredric)
-[![Build Status](https://travis-ci.com/DannyBen/fredric.svg?branch=master)](https://travis-ci.com/DannyBen/fredric)
+[![Build Status](https://github.com/DannyBen/fredric/workflows/Test/badge.svg)](https://github.com/DannyBen/fredric/actions?query=workflow%3ATest)
 [![Maintainability](https://api.codeclimate.com/v1/badges/4b0a8627ceb5343b55fa/maintainability)](https://codeclimate.com/github/DannyBen/fredric/maintainability)
 
 ---
