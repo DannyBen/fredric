@@ -1,6 +1,6 @@
 require 'super_docopt'
 require 'json'
-require 'awesome_print'
+require 'lp'
 
 module Fredric
 
@@ -47,7 +47,7 @@ module Fredric
     end
 
     def see
-      ap fredric.get path, params
+      lp fredric.get path, params
     end
 
     def url

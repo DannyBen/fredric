@@ -109,7 +109,7 @@ describe CommandLine do
       let(:command) { %w[see series series_id:GNPCA] }
 
       it "awesome-prints output" do
-        expected = /"seriess".*=>.*\[/
+        expected = /seriess:/
         expect {cli.execute command}.to output(expected).to_stdout
       end
     end
