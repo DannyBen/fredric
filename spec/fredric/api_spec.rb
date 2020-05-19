@@ -34,14 +34,14 @@ describe API do
     context "with a response that contains at least one array" do
       it "returns a csv string" do
         result = fredric.get_csv 'category/children', category_id: 0
-        expect(result).to match_fixture 'categories.csv'
+        expect(result).to match_approval 'categories.csv'
       end
     end
 
     context "with a response that does not contain any array" do
       it "returns a csv string" do
         result = fredric.get_csv 'series', series_id: 'GNPCA'
-        expect(result).to match_fixture('gnpca-meta.csv').diff(50)
+        expect(result).to match_approval('gnpca-meta.csv').diff(50)
       end
     end
 
@@ -62,7 +62,7 @@ describe API do
       fredric.save_csv filename, 'category/children', category_id: 0
       
       expect(File).to exist(filename)
-      expect(File.read filename).to match_fixture 'categories.csv'
+      expect(File.read filename).to match_approval 'categories.csv'
       
       File.delete filename
     end

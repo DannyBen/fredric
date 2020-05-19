@@ -125,7 +125,7 @@ describe CommandLine do
 
         expect {cli.execute command}.to output(expected).to_stdout
         expect(File).to exist filename
-        expect(File.read filename).to match_fixture('categories.json')
+        expect(File.read filename).to match_approval('categories.json')
 
         File.unlink filename
       end
@@ -142,7 +142,7 @@ describe CommandLine do
 
         expect {cli.execute command}.to output(expected).to_stdout
         expect(File).to exist filename
-        expect(File.read filename).to match_fixture('categories.csv')
+        expect(File.read filename).to match_approval('categories.csv')
 
         File.unlink filename
       end
