@@ -16,7 +16,7 @@ Commands:
     Downloads data and prints it as a prettified JSON output.
 
   see
-    Downloads data and awesome-prints it.
+    Downloads data and prints it in a human readable manner.
 
   url
     Shows the URL constructed from the request.
