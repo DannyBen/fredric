@@ -1,13 +1,12 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem 'runfile'
-gem 'runfile-tasks'
+gem 'byebug'
+gem 'rdoc'
 gem 'rspec'
 gem 'rspec_approvals'
-gem 'rdoc'
-gem 'byebug'
+gem 'runfile'
+gem 'runfile-tasks'
 gem 'simplecov'
 gem 'yard'
 
 gemspec
-

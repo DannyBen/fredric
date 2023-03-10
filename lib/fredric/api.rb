@@ -8,7 +8,7 @@ module Fredric
 
     attr_reader :api_key
 
-    def initialize(api_key, opts={})
+    def initialize(api_key, opts = {})
       @api_key = api_key
       cache.disable unless opts[:use_cache]
       cache.dir = opts[:cache_dir] if opts[:cache_dir]
@@ -16,7 +16,7 @@ module Fredric
     end
 
     def default_query
-      { api_key: api_key, file_type: :json } 
+      { api_key: api_key, file_type: :json }
     end
   end
 end

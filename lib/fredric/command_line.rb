@@ -3,12 +3,11 @@ require 'json'
 require 'lp'
 
 module Fredric
-
   # Handles the command line interface
   class CommandLine < SuperDocopt::Base
     version VERSION
     docopt File.expand_path 'docopt.txt', __dir__
-    subcommands ['get', 'pretty', 'see', 'url', 'save']
+    subcommands %w[get pretty see url save]
 
     attr_reader :path, :params, :file, :csv
 
@@ -18,9 +17,9 @@ module Fredric
       @file   = args['FILE']
       @csv    = args['--csv']
 
-      unless api_key
-        raise Fredric::MissingAuth, "Missing Authentication\nPlease set FRED_KEY=y0urAP1k3y"
-      end
+      return if api_key
+
+      raise Fredric::MissingAuth, "Missing Authentication\nPlease set FRED_KEY=y0urAP1k3y"
     end
 
     def get
@@ -33,12 +32,12 @@ module Fredric
     end
 
     def save
-      if csv
-        success = fredric.save_csv file, path, params
+      success = if csv
+        fredric.save_csv file, path, params
       else
-        success = fredric.save file, path, params
+        fredric.save file, path, params
       end
-      puts success ? "Saved #{file}" : "Saving failed"
+      puts success ? "Saved #{file}" : 'Saving failed'
     end
 
     def pretty
@@ -58,7 +57,7 @@ module Fredric
       @fredric ||= fredric!
     end
 
-    private
+  private
 
     def fredric!
       Fredric::API.new api_key, options
@@ -69,6 +68,7 @@ module Fredric
     def translate_params(pairs)
       result = {}
       return result if pairs.empty?
+
       pairs.each do |pair|
         key, value = pair.split ':'
         result[key.to_sym] = value
@@ -79,7 +79,7 @@ module Fredric
     def options
       result = {}
       return result unless cache_dir || cache_life
-      
+
       result[:use_cache] = true
       result[:cache_dir] = cache_dir if cache_dir
       result[:cache_life] = cache_life.to_i if cache_life
@@ -97,6 +97,5 @@ module Fredric
     def cache_life
       ENV['FRED_CACHE_LIFE']
     end
-
   end
 end
