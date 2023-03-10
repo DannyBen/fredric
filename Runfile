@@ -1,20 +1,13 @@
-require "runfile-tasks"
-require_relative 'lib/fredric'
+require 'fredric/version'
 
 title   "Fredric Developer Toolbelt"
 summary "Runfile tasks for building the Fredric gem"
 version Fredric::VERSION
 
-RunfileTasks::RubyGems.all 'fredric'
-RunfileTasks::Testing.rspec
-RunfileTasks::Docs.rdoc
+import_gem 'runfile-tasks/gem'
+import 'debug'
 
 help   "Run YARD server"
 action :yard do
   system "yard server -p3000 -B0.0.0.0 -r"
-end
-
-help   "Run interactive console"
-action :console, :c do
-  system "bundle exec bin/console"
 end
