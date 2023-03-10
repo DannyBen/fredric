@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.executables = ["fred"]
   s.homepage    = 'https://github.com/DannyBen/fredric'
   s.license     = 'MIT'
-  s.required_ruby_version = ">= 2.0.0"
+  s.required_ruby_version = ">= 2.7"
 
   s.add_runtime_dependency 'super_docopt', '~> 0.1'
   s.add_runtime_dependency 'lp', '~> 0.2'
