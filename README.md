@@ -1,5 +1,4 @@
-FRED API Library and Command Line
-==================================================
+# FRED API Library and Command Line
 
 [![Gem Version](https://badge.fury.io/rb/fredric.svg)](https://badge.fury.io/rb/fredric)
 [![Build Status](https://github.com/DannyBen/fredric/workflows/Test/badge.svg)](https://github.com/DannyBen/fredric/actions?query=workflow%3ATest)
@@ -8,13 +7,12 @@ FRED API Library and Command Line
 ---
 
 This gem provides both a Ruby library and a command line interface for the 
-[FRED][1] data service.
+[Federal Reserve Economic Data (FRED)][1] API.
 
 ---
 
 
-Install
---------------------------------------------------
+## Install
 
 ```
 $ gem install fredric
@@ -27,8 +25,7 @@ gem 'fredric'
 ```
 
 
-Features
---------------------------------------------------
+## Features
 
 * Easy to use interface.
 * Use as a library or through the command line.
@@ -38,8 +35,7 @@ Features
 * Includes a built in file cache (disabled by default).
 
 
-Usage
---------------------------------------------------
+## Usage
 
 First, require and initialize with your [FRED API Key][4].
 
@@ -134,9 +130,7 @@ fredric.save_csv "filename.csv", "series/overvations", series_id: 'GNPCA'
 ```
 
 
-
-Command Line
---------------------------------------------------
+## Command Line
 
 The command line utility `fred` acts in a similar way. To set your 
 FRED API Key, simply set it in the environment variable `FRED_KEY`:
@@ -175,8 +169,7 @@ $ fred url series/observations query:interest limit:5
 ```
 
 
-Caching
---------------------------------------------------
+## Caching
 
 We are using the [Lightly][3] gem for automatic HTTP caching.
 To take the path of least surprises, caching is disabled by default.
