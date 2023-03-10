@@ -6,7 +6,7 @@
 
 ---
 
-This gem provides both a Ruby library and a command line interface for the 
+Command line interface and a Ruby library for the 
 [Federal Reserve Economic Data (FRED)][1] API.
 
 ---
