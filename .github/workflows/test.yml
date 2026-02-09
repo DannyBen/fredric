@@ -10,14 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      matrix: { ruby: ['3.0', '3.1', '3.2', head] }
+      matrix: { ruby: ['3.2', '3.3', '3.4', '4.0'] }
 
     env:
       FRED_KEY: ${{ secrets.FRED_KEY }}
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Install OS dependencies
       run: sudo apt-get -y install libyaml-dev
