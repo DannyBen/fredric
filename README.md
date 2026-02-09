@@ -1,5 +1,7 @@
 # FRED API Library and Command Line
 
+![repocard](https://repocard.dannyben.com/svg/fredric.svg)
+
 Command line interface and a Ruby library for the 
 [Federal Reserve Economic Data (FRED)][1] API.
 
